@@ -8,17 +8,15 @@ export default function ActivitiesPage() {
 
   const { data: activities, loading, error } = useQuery("/activities", "activities");
 
-  // DELETE mutation — resource will be passed dynamically
   const { mutate: deleteActivity, error: deleteError } = useMutation("DELETE", null, ["activities"]);
 
-  // POST mutation — for adding new activities
   const { mutate: addActivity, error: addError } = useMutation("POST", "/activities", ["activities"]);
 
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
 
   const handleDelete = (id) => {
-    deleteActivity(null, `/activities/${id}`); // passing the full resource dynamically
+    deleteActivity(null, `/activities/${id}`); 
   };
 
   const handleAdd = (e) => {
